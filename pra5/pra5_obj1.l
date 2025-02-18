@@ -1,5 +1,8 @@
 %{
 #include <stdio.h>
+#include <stdlib.h>
+
+extern FILE *yyin;
 %}
 
 DIGIT    [0-9]+
@@ -36,7 +39,18 @@ COMMENT_MULTI   "/*"([^*]|\*+[^*/])*\*+"/"
 %%  // SECOND `%%` MUST BE HERE
 
 int main() {
+    char filename[100];
+    printf("Enter the name of the file: ");
+    scanf("%s", filename);
+
+    yyin = fopen(filename, "r");
+    if (!yyin) {
+        perror("Error opening file");
+        return 1;
+    }
+
     yylex();  // Start lexical analysis
+    fclose(yyin);
     return 0;
 }
 
