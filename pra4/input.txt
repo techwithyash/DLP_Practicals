@@ -1,4 +1,2 @@
-int a = 3;
-int b = 7;
 int al@;
-this is yash 
+hello@123
