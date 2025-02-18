@@ -391,7 +391,7 @@ char *yytext;
 #line 2 "pra4_obj3_wordcount.l"
 #include <stdio.h>
 
-int char_count = 0, word_count = 0, line_count = 0, tab_count = 0, ident_count = 0, special_count = 0, space_count = 0, keyword_count = 0;
+int char_count = 0, word_count = 0, line_count = 0, tab_count = 0, ident_count = 0, special_count = 0, space_count = 0, keyword_count = 0, constant_count = 0;
 extern FILE *yyin;
 #line 397 "lex.yy.c"
 
@@ -658,7 +658,7 @@ YY_RULE_SETUP
 case 6:
 YY_RULE_SETUP
 #line 20 "pra4_obj3_wordcount.l"
-{ word_count++; char_count += yyleng; }
+{ constant_count++; word_count++; char_count += yyleng; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
@@ -1586,6 +1586,7 @@ int main() {
     printf("Keywords : %d\n", keyword_count);
     printf("Special Characters : %d\n", special_count);
     printf("Spaces : %d\n", space_count);
+    printf("Constants : %d\n", constant_count);
 
     return 0;
 }
